@@ -84,6 +84,7 @@ def startup():
     mqtt_client.on_message = on_message
     if app_config.mqtt_username is not None and app_config.mqtt_username == "":
         mqtt_client.username_pw_set(app_config.mqtt_username, app_config.mqtt_password)
+        logging.info(f"Using credentials with username {app_config.mqtt_username}")
     mqtt_client.connect(app_config.mqtt_broker, app_config.mqtt_port, 60)
 
     mqtt_client.loop_start()
